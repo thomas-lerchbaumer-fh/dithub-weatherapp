@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.dithub.weather.Main"
-            prefHeight="400.0" prefWidth="600.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
-</AnchorPane>
+
+    <ImageView fitHeight="18.0" fitWidth="67.0" layoutX="908.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+      <image>
+         <Image url="@img/logo.png" />
+      </image>
+    </ImageView>
+
+
+
+   <Line endX="100.5" layoutX="152.0" layoutY="44.0" startX="-100.0" stroke="#707070" />
+   <SVGPath content="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" fill="WHITE" layoutX="49.0" layoutY="17.0" opacity="0.68" styleClass="0.5" />
+   <TextField id="search-box" focusTraversable="false" layoutX="69.0" layoutY="15.0" prefHeight="25.0" prefWidth="174.0" promptText="enter city name" styleClass="search-field" stylesheets="@css/style.css">
+      <font>
+         <Font size="14.0" />
+      </font>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></TextField>
+    
+</Pane>

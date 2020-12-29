@@ -1,2 +1,6 @@
+com/dithub/weather/WeatherData.java
+ com.dithub.weather.WeatherData
+com/dithub/weather/SearchRequest.java
+ com.dithub.weather.SearchRequest
 com/dithub/weather/Main.java
  com.dithub.weather.Main

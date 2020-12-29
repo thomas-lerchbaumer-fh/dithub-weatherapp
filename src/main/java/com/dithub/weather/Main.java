@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.shape.SVGPath;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
         primaryStage.setTitle("Weather forecast powered by Dithub");
-        primaryStage.setScene(new Scene(root, 800, 400));
+        primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.show();
 
     }
