@@ -25,6 +25,7 @@ public class Main extends Application {
         }
         primaryStage.setTitle("Weather forecast powered by Dithub");
         primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

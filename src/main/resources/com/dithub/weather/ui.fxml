@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dithub.weather.controller.MainUiController">
 
 
     <ImageView fitHeight="18.0" fitWidth="67.0" layoutX="908.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
@@ -18,7 +18,7 @@
 
 
    <Line endX="100.5" layoutX="152.0" layoutY="44.0" startX="-100.0" stroke="#707070" />
-   <SVGPath content="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" fill="WHITE" layoutX="49.0" layoutY="17.0" opacity="0.68"  />
+   <SVGPath content="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" fill="WHITE" layoutX="49.0" layoutY="17.0" opacity="0.6" />
    <TextField id="search-box" focusTraversable="false" layoutX="69.0" layoutY="15.0" prefHeight="25.0" prefWidth="174.0" promptText="enter city name" styleClass="search-field" stylesheets="@css/style.css">
       <font>
          <Font size="14.0" />
@@ -29,5 +29,37 @@
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></TextField>
-    
+
+   <Label fx:id="lblCity" alignment="TOP_CENTER" layoutX="400.0" layoutY="46.0" opacity="0.41" prefHeight="43.0" prefWidth="202.0" text="Vienna" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Label>
+   <Line endX="125.0" layoutX="505.0" layoutY="89.0" startX="-135.0" stroke="WHITE" />
+   <SVGPath content="M12,2A7,7,0,0,0,5,9c0,5.25,7,13,7,13s7-7.75,7-13A7,7,0,0,0,12,2Zm0,9.5A2.5,2.5,0,1,1,14.5,9,2.5,2.5,0,0,1,12,11.5Z" fill="WHITE" layoutX="612.0" layoutY="55.0" opacity="0.6" />
+
+   <Label fx:id="lblTemp" alignment="TOP_CENTER" layoutX="387.0" layoutY="101.0" opacity="0.41" prefHeight="43.0" prefWidth="57.0" text="23°" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Label>
+
+   <Label fx:id="lblCurrTime" alignment="TOP_CENTER" layoutX="538.0" layoutY="101.0" opacity="0.41" prefHeight="43.0" prefWidth="93.0" text="14:00" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Label>
+
+   <Label fx:id="lblCurrDay" alignment="TOP_CENTER" layoutX="407.0" layoutY="158.0" opacity="0.41" prefHeight="43.0" prefWidth="189.0" text="Tue 20, 2020" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Label>
+
+   <ImageView fx:id="imgWeatherImg" fitHeight="100.0" fitWidth="100.0" layoutX="450.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@img/icons/01d.png" />
+      </image></ImageView>
+
+
 </Pane>
