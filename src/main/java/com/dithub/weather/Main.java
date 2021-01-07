@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.shape.SVGPath;
 
 import java.io.IOException;
 
@@ -18,6 +17,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Parent root = null;
+        WeatherData newData = new WeatherData();
+        System.out.println(newData.getCurrentApiData("Vienna"));
         try {
             root = FXMLLoader.load(getClass().getResource("ui.fxml"));
         } catch (IOException e) {
