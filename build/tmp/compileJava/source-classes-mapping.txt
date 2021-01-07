@@ -1,19 +1,10 @@
-<<<<<<< Updated upstream
-com/dithub/weather/Main.java
- com.dithub.weather.Main
 com/dithub/weather/WeatherData.java
  com.dithub.weather.WeatherData
+com/dithub/weather/SearchRequest.java
+ com.dithub.weather.SearchRequest
 com/dithub/weather/controller/SingleDayController.java
  com.dithub.weather.controller.SingleDayController
-com/dithub/weather/SearchRequest.java
- com.dithub.weather.SearchRequest
-com/dithub/weather/controller/MainUiController.java
- com.dithub.weather.controller.MainUiController
-=======
-com/dithub/weather/SearchRequest.java
- com.dithub.weather.SearchRequest
-com/dithub/weather/WeatherData.java
- com.dithub.weather.WeatherData
 com/dithub/weather/Main.java
  com.dithub.weather.Main
->>>>>>> Stashed changes
+com/dithub/weather/controller/MainUiController.java
+ com.dithub.weather.controller.MainUiController

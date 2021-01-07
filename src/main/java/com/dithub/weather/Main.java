@@ -17,8 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Parent root = null;
-        WeatherData newData = new WeatherData();
-        System.out.println(newData.getCurrentApiData("Vienna"));
+
         try {
             root = FXMLLoader.load(getClass().getResource("ui.fxml"));
         } catch (IOException e) {
@@ -28,6 +27,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.setResizable(false);
         primaryStage.show();
+
 
     }
 }
