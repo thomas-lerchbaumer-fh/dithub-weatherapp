@@ -30,7 +30,6 @@
          <Cursor fx:constant="HAND" />
       </cursor></TextField>
 
-
    <Label fx:id="lblCity" alignment="TOP_CENTER" layoutX="400.0" layoutY="46.0" opacity="0.41" prefHeight="43.0" prefWidth="202.0" text="Vienna" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font size="27.0" />
