@@ -1,0 +1,23 @@
+Pane{
+    -fx-background-color: #212121;
+}
+
+#logo-dit{
+   -fx-background-image: url(../img/logo.png);
+   -fx-background-repeat: no-repeat;
+   -fx-background-position: center center;
+}
+
+#search{
+    -fx-opacity: 0.5;
+}
+
+#search-box {
+    -fx-background-color: transparent !important;
+}
+
+#search-box:focused{
+    -fx-text-fill: white !important;
+
+
+}
