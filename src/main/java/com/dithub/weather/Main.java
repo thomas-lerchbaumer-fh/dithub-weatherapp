@@ -22,7 +22,8 @@ public class Main extends Application {
         Task<Void> task = createLongStartTask();
 
         Parent root = null;
-
+        APIHandler newData = new APIHandler();
+        WeatherDay testOneDay = new WeatherDay(newData.getCurrentApiData("Vienna"));
         try {
             root = FXMLLoader.load(getClass().getResource("ui.fxml"));
         } catch (IOException e) {

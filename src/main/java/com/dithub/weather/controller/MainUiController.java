@@ -1,6 +1,8 @@
 package com.dithub.weather.controller;
 
-import com.dithub.weather.WeatherData;
+
+import com.dithub.weather.APIHandler;
+import com.dithub.weather.WeatherDay;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -45,17 +47,25 @@ public class MainUiController {
     private void initialize() throws FileNotFoundException {
 
         //pulling data from weather data class
-        WeatherData newData = new WeatherData();
-        ArrayList<Object> listWeather = newData.getCurrentApiData("Vienna");
-        System.out.println(listWeather);
-        JSONArray firstDay = new JSONArray(listWeather);
+        APIHandler data = new APIHandler();
+        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData("Vienna");
+        WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
 
+<<<<<<< Updated upstream
         // --------------- This block will be removed once the linker is ready ------------------------
         String city = firstDay.getJSONObject(0).get("name").toString();
         String country = firstDay.getJSONObject(0).getJSONObject("sys").get("country").toString();
         int tempCel = firstDay.getJSONObject(0).getJSONObject("main").getInt("temp");
         String temp = tempCel + "\u00B0";
         String iconIdent = firstDay.getJSONObject(0).getJSONArray("weather").getJSONObject(0).get("icon").toString();
+=======
+
+        String city = oneDayWeather.cityOneDay;
+        String country = oneDayWeather.countryOneDay;
+        String tempCel = oneDayWeather.tempOneDay;
+        //String iconIdent = oneDayWeather.iconOneDay;
+        String iconIdent = "02d";
+>>>>>>> Stashed changes
         System.out.println(iconIdent);
         String imgPath = "/com/dithub/weather/img/icons/"+iconIdent+".png";
         Image img = new Image(getClass().getResource(imgPath).toString());
@@ -85,6 +95,9 @@ public class MainUiController {
 
         return format.format(currentDay);
     }
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 }
