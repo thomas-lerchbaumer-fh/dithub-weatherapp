@@ -80,10 +80,10 @@ public class MainUiController {
 
         //pulling data from weather data class
         APIHandler data = new APIHandler();
-        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData("Vienna");
+        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData(data.getCurrentLocation());
         WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
 
-        ArrayList<Object> dailyForecastData = data.getForecastApiData("Vienna");
+        ArrayList<Object> dailyForecastData = data.getForecastApiData(data.getCurrentLocation());
 
         WeatherForecast dailyForecast = new WeatherForecast(dailyForecastData,5);
 

@@ -3,13 +3,19 @@ package com.dithub.weather;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import org.json.*;
+import org.w3c.dom.Document;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 
 public class APIHandler {
@@ -83,6 +89,37 @@ public class APIHandler {
             System.err.println("Request error: " + ex.getMessage());
         }
         return listdata;
+    }
+
+    public static String getCurrentLocation() {
+        String cityName = "";
+
+
+        try {
+            InetAddress myIP=InetAddress.getLocalHost();
+
+            URL url = new URL("http://www.geoplugin.net/xml.gp?"
+                    +"ip" +myIP);;
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document doc = dBuilder.parse(conn.getInputStream());
+                cityName = doc.getElementsByTagName("geoplugin_city").item(0).getTextContent();
+            } else {
+                System.err.println("Wrong response code: " + responseCode);
+            }
+        } catch (Exception ex) {
+            System.err.println("Request error: " + ex.getMessage());
+        }
+        return cityName;
     }
 }
 
