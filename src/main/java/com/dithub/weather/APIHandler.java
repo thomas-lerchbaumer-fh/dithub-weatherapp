@@ -12,45 +12,16 @@ import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-<<<<<<< HEAD
-=======
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
->>>>>>> master
 
 
 public class APIHandler {
 
     //user search request here
     //Please implement logic for search request (pulling data) you can use dummy city, search field input will be done by me
-
-    public static String getCurrentLocation() {
-        String cityName = "";
-        try {
-            URL url = new URL("http://geoplugin.net/xml.gp?ip10.0.0.13");
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-
-            int responseCode = conn.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream()));
-
-                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-                Document doc = dBuilder.parse(conn.getInputStream());
-                cityName = doc.getElementsByTagName("geoplugin_city").item(0).getTextContent();
-            } else {
-                System.err.println("Wrong response code: " + responseCode);
-            }
-        } catch (Exception ex) {
-            System.err.println("Request error: " + ex.getMessage());
-        }
-        return cityName;
-    }
 
     public static ArrayList<Object> getCurrentApiData(String location) {
         ArrayList<Object> listdata = new ArrayList<Object>();

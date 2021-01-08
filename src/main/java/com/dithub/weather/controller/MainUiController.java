@@ -85,7 +85,7 @@ public class MainUiController {
     private void initialize() throws FileNotFoundException {
 
         APIHandler data = new APIHandler();
-<<<<<<< HEAD
+
 
         //Get Search Request
 
@@ -153,13 +153,7 @@ public class MainUiController {
         ArrayList<Object> oneDayWeatherData = data.getCurrentApiData(location);
         WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
 
-        ArrayList<Object> dailyForecastData = data.getForecastApiData(location);
-=======
-        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData(data.getCurrentLocation());
-        WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
-
         ArrayList<Object> dailyForecastData = data.getForecastApiData(data.getCurrentLocation());
->>>>>>> master
 
         WeatherForecast dailyForecast = new WeatherForecast(dailyForecastData,5);
 
