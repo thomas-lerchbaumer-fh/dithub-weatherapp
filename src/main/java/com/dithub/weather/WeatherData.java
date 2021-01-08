@@ -19,7 +19,7 @@ public class WeatherData {
 
     public static ArrayList<Object> getCurrentApiData(String location) {
         ArrayList<Object> listdata = new ArrayList<Object>();
-        String appId = "b1f2d01d253273e36e3005b89b2e84db";
+        String appId = "";
 
         try {
             URL url = new URL("http://api.openweathermap.org/data/2.5/weather"
