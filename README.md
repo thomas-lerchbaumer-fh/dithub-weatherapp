@@ -16,8 +16,8 @@ Timezones need to be redone for the Search Requests
 
 
 Project: Weather App 
-API used: https://openweathermap.org/api  
-          www.geoplugin.net
+API used: https://openweathermap.org/api  // for Weather Data
+          www.geoplugin.net               // for IP-Lookup @ initial load
 
 General:
 JavaFx project (setup through gradle)
