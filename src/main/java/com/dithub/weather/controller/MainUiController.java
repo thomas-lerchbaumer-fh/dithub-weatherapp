@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.Math.round;
+
 public class MainUiController {
 
     @FXML
@@ -48,23 +50,21 @@ public class MainUiController {
         System.out.println(listWeather);
         JSONArray firstDay = new JSONArray(listWeather);
 
-
+        // --------------- This block will be removed once the linker is ready ------------------------
         String city = firstDay.getJSONObject(0).get("name").toString();
         String country = firstDay.getJSONObject(0).getJSONObject("sys").get("country").toString();
-        String tempCel = firstDay.getJSONObject(0).getJSONObject("main").get("temp").toString();
-       // String iconIdent = firstDay.getJSONObject(0).getJSONArray("weather").getJSONObject(0).get("icon").toString();
-        String iconIdent = "02d";
+        int tempCel = firstDay.getJSONObject(0).getJSONObject("main").getInt("temp");
+        String temp = tempCel + "\u00B0";
+        String iconIdent = firstDay.getJSONObject(0).getJSONArray("weather").getJSONObject(0).get("icon").toString();
         System.out.println(iconIdent);
-
         String imgPath = "/com/dithub/weather/img/icons/"+iconIdent+".png";
         Image img = new Image(getClass().getResource(imgPath).toString());
+        // --------------- This block will be removed once the linker is ready ------------------------
 
-
-        System.out.println(city);
-
+        //setting infos from API to UI lables/img
         lblCity.setText(city+ ", " + country);
         lblCurrTime.setText(getTime());
-        lblTemp.setText(tempCel);
+        lblTemp.setText(temp);
         lblCurrDay.setText(getDay());
         imgWeatherImg.setImage(img);
     }
@@ -85,15 +85,6 @@ public class MainUiController {
 
         return format.format(currentDay);
     }
-
-    private WeatherData getDataWeather(){
-        WeatherData dataNew = new WeatherData();
-        dataNew.getCurrentApiData("Vienna");
-
-        return dataNew;
-
-    }
-
 
 
 }
