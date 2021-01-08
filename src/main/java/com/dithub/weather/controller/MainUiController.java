@@ -3,8 +3,11 @@ package com.dithub.weather.controller;
 import com.dithub.weather.APIHandler;
 import com.dithub.weather.WeatherDay;
 import com.dithub.weather.WeatherForecast;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.image.Image;
@@ -35,6 +38,9 @@ public class MainUiController {
 
     @FXML
     public ImageView imgWeatherImg;
+
+    @FXML
+    public TextField searchBox;
 
     @FXML
     public Label lblday2;
@@ -78,12 +84,75 @@ public class MainUiController {
     @FXML
     private void initialize() throws FileNotFoundException {
 
-        //pulling data from weather data class
         APIHandler data = new APIHandler();
-        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData("Vienna");
+
+        //Get Search Request
+
+        searchBox.setOnAction(new EventHandler<ActionEvent>() {
+            String tfData = "";
+            @Override
+            public void handle(ActionEvent event) {
+                tfData = searchBox.getText();
+                ArrayList<Object> oneDayWeatherDataRequest = data.getCurrentApiData(tfData);
+                WeatherDay oneDayWeatherRequest = new WeatherDay(oneDayWeatherDataRequest);
+                ArrayList<Object> dailyForecastDataRequest = data.getForecastApiData(tfData);
+                WeatherForecast dailyForecastRequest = new WeatherForecast(dailyForecastDataRequest,5);
+
+                ArrayList dayList = getDaysOfWeek();
+
+                String city = oneDayWeatherRequest.cityOneDay;
+                String country = oneDayWeatherRequest.countryOneDay;
+                String tempCel = oneDayWeatherRequest.tempOneDay;
+                String iconIdent = oneDayWeatherRequest.iconOneDay;
+                String imgPath = "/com/dithub/weather/img/icons/";
+                Image img = new Image(getClass().getResource(imgPath).toString());
+
+                //setting infos from API to UI lables/img
+                lblCity.setText(city+ ", " + country);
+                lblCurrTime.setText(getTime());
+                lblTemp.setText(tempCel);
+                lblCurrDay.setText(getDay());
+                imgWeatherImg.setImage(new Image(imgPath+iconIdent+".png"));
+
+                //day 2
+                lblday2.setText(String.valueOf(dayList.get(0)));
+                imgWeatherImg2.setImage(new Image(imgPath+dailyForecastRequest.iconForecast[0]+".png"));
+                lblday2temp.setText(dailyForecastRequest.tempForecast[0]);
+
+                //day 3
+                lblday3.setText(String.valueOf(dayList.get(1)));
+                imgWeatherImg3.setImage(new Image(imgPath+dailyForecastRequest.iconForecast[1]+".png"));
+                lblday3temp.setText(dailyForecastRequest.tempForecast[1]);
+
+                //day 4
+                lblday4.setText(String.valueOf(dayList.get(2)));
+                imgWeatherImg4.setImage(new Image(imgPath+dailyForecastRequest.iconForecast[2]+".png"));
+                lblday4temp.setText(dailyForecastRequest.tempForecast[2]);
+
+                //day 5
+                lblday5.setText(String.valueOf(dayList.get(3)));
+                imgWeatherImg5.setImage(new Image(imgPath+dailyForecastRequest.iconForecast[3]+".png"));
+                lblday5temp.setText(dailyForecastRequest.tempForecast[3]);
+
+                //day 6
+                lblday6.setText(String.valueOf(dayList.get(4)));
+                imgWeatherImg6.setImage(new Image(imgPath+dailyForecastRequest.iconForecast[4]+".png"));
+                lblday6temp.setText(dailyForecastRequest.tempForecast[4]);
+
+                getDaysOfWeek();
+
+
+            }
+        });
+
+
+        //pulling data from weather data class
+
+        String location = data.getCurrentLocation();
+        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData(location);
         WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
 
-        ArrayList<Object> dailyForecastData = data.getForecastApiData("Vienna");
+        ArrayList<Object> dailyForecastData = data.getForecastApiData(location);
 
         WeatherForecast dailyForecast = new WeatherForecast(dailyForecastData,5);
 
