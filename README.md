@@ -8,7 +8,7 @@ Injacio Glejuci
 Thomas Lerchbaumer 
 
 NOTE!
-Before testing the app u need to add the API Key first (File WeatherData Line 23 appId = "") 
+Before testing the app u need to add the API Key first (File ApiHanler.java Line 22 appId = "") 
 Key will be given by Leon
 
 Two "features" are currently missing
