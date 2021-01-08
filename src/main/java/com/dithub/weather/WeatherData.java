@@ -15,12 +15,11 @@ import org.json.*;
 public class WeatherData {
 
     //user search request here
-    //API-Key: 8bcb04fb242f29f824ec1efb44188c91 request URL: api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
     //Please implement logic for search request (pulling data) you can use dummy city, search field input will be done by me
 
     public static ArrayList<Object> getCurrentApiData(String location) {
         ArrayList<Object> listdata = new ArrayList<Object>();
-        String appId = "";
+        String appId = "b1f2d01d253273e36e3005b89b2e84db";
 
         try {
             URL url = new URL("http://api.openweathermap.org/data/2.5/weather"
