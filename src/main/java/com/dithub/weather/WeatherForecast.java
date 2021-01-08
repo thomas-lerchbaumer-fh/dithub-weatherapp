@@ -8,6 +8,7 @@ public class WeatherForecast {
 
     public String countryForecast;
     public String cityForecast;
+    public int timezoneOffsetForecast;
     public String[] tempForecast = new String[5];
     public String[] iconForecast = new String[5];
 
@@ -17,6 +18,7 @@ public class WeatherForecast {
 
         this.countryForecast = forecastData.getJSONObject(0).getJSONObject("city").get("country").toString();
         this.cityForecast = forecastData.getJSONObject(0).getJSONObject("city").get("name").toString();
+        this.timezoneOffsetForecast = (Integer)forecastData.getJSONObject(0).getJSONObject("city").get("timezone");
         for(int i = 0; i<noOfDays*8; i=i+8){
             this.tempForecast[count] = forecastData.getJSONObject(0).getJSONArray("list").getJSONObject(i).getJSONObject("main").getInt("temp") + "\u00B0";
             count++;

@@ -1,16 +1,16 @@
-com/dithub/weather/WeatherDay.java
- com.dithub.weather.WeatherDay
+com/dithub/weather/controller/SingleDayController.java
+ com.dithub.weather.controller.SingleDayController
 com/dithub/weather/Preloader.java
  com.dithub.weather.Preloader
+com/dithub/weather/APIHandler.java
+ com.dithub.weather.APIHandler
 com/dithub/weather/Main.java
  com.dithub.weather.Main
  com.dithub.weather.Main$1
+com/dithub/weather/WeatherDay.java
+ com.dithub.weather.WeatherDay
+com/dithub/weather/WeatherForecast.java
+ com.dithub.weather.WeatherForecast
 com/dithub/weather/controller/MainUiController.java
  com.dithub.weather.controller.MainUiController
  com.dithub.weather.controller.MainUiController$1
-com/dithub/weather/controller/SingleDayController.java
- com.dithub.weather.controller.SingleDayController
-com/dithub/weather/APIHandler.java
- com.dithub.weather.APIHandler
-com/dithub/weather/WeatherForecast.java
- com.dithub.weather.WeatherForecast

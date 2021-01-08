@@ -16,10 +16,16 @@ import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainUiController {
@@ -105,6 +111,8 @@ public class MainUiController {
                 String country = oneDayWeatherRequest.countryOneDay;
                 String tempCel = oneDayWeatherRequest.tempOneDay;
                 String iconIdent = oneDayWeatherRequest.iconOneDay;
+                int timezoneOneDay = oneDayWeatherRequest.timezoneOffsetOneDay;
+                int timezoneForecast = dailyForecastRequest.timezoneOffsetForecast;
                 String imgPath = "/com/dithub/weather/img/icons/";
                 Image img = new Image(getClass().getResource(imgPath).toString());
 
@@ -163,6 +171,14 @@ public class MainUiController {
         String country = oneDayWeather.countryOneDay;
         String tempCel = oneDayWeather.tempOneDay;
         String iconIdent = oneDayWeather.iconOneDay;
+        int timezoneOneDay = oneDayWeather.timezoneOffsetOneDay;
+        int timezoneForecast = dailyForecast.timezoneOffsetForecast;
+        System.out.println(timezoneForecast);
+        System.out.println(timezoneOneDay);
+
+        long epoch = System.currentTimeMillis()/1000;
+        long correctTimezone = (epoch+timezoneOneDay)/1000;
+
         String imgPath = "/com/dithub/weather/img/icons/";
         Image img = new Image(getClass().getResource(imgPath).toString());
 
