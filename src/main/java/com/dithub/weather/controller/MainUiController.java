@@ -140,7 +140,7 @@ public class MainUiController {
     //formatting current day (on app launch)
     private String getDay(){
         Date currentDay = new Date();
-        DateFormat format = new SimpleDateFormat("EEE d, YYYY");
+        DateFormat format = new SimpleDateFormat("EEE d, MMM, YYYY");
         return format.format(currentDay);
     }
 
