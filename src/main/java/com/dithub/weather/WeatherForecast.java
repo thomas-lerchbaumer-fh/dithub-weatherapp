@@ -18,7 +18,7 @@ public class WeatherForecast {
         this.countryForecast = forecastData.getJSONObject(0).getJSONObject("city").get("country").toString();
         this.cityForecast = forecastData.getJSONObject(0).getJSONObject("city").get("name").toString();
         for(int i = 0; i<noOfDays*8; i=i+8){
-            this.tempForecast[count] = forecastData.getJSONObject(0).getJSONArray("list").getJSONObject(i).getJSONObject("main").get("temp").toString();
+            this.tempForecast[count] = forecastData.getJSONObject(0).getJSONArray("list").getJSONObject(i).getJSONObject("main").getInt("temp") + "\u00B0";
             count++;
         }
         count = 0;

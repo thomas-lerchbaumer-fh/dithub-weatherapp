@@ -17,7 +17,7 @@ public class WeatherDay {
 
         this.countryOneDay = oneDayData.getJSONObject(0).getJSONObject("sys").get("country").toString();
         this.cityOneDay = oneDayData.getJSONObject(0).get("name").toString();
-        this.tempOneDay = oneDayData.getJSONObject(0).getJSONObject("main").get("temp").toString();
+        this.tempOneDay = oneDayData.getJSONObject(0).getJSONObject("main").getInt("temp") +"\u00B0";
         this.iconOneDay = oneDayData.getJSONObject(0).getJSONArray("weather").getJSONObject(0).get("icon").toString();
     }
 }
