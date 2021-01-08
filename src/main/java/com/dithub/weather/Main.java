@@ -54,7 +54,7 @@ public class Main extends Application {
             protected Void call() throws Exception {
                 int max = 10;
                 for (int i = 1; i <= max; i++) {
-                    Thread.sleep(200);
+                    Thread.sleep(400);
                     updateProgress(i, max);
                 }
                 return null;

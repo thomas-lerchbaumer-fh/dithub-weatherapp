@@ -19,7 +19,7 @@ public class APIHandler {
 
     public static ArrayList<Object> getCurrentApiData(String location) {
         ArrayList<Object> listdata = new ArrayList<Object>();
-        String appId = "";
+        String appId = "8bcb04fb242f29f824ec1efb44188c91";
 
         try {
             URL url = new URL("http://api.openweathermap.org/data/2.5/weather"
