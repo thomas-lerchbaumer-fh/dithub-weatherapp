@@ -7,10 +7,15 @@ com/dithub/weather/Main.java
  com.dithub.weather.Main$1
 com/dithub/weather/WeatherForecast.java
  com.dithub.weather.WeatherForecast
+<<<<<<< HEAD
 com/dithub/weather/controller/SingleDayController.java
  com.dithub.weather.controller.SingleDayController
+=======
+>>>>>>> master
 com/dithub/weather/APIHandler.java
  com.dithub.weather.APIHandler
+com/dithub/weather/controller/SingleDayController.java
+ com.dithub.weather.controller.SingleDayController
 com/dithub/weather/controller/MainUiController.java
  com.dithub.weather.controller.MainUiController
  com.dithub.weather.controller.MainUiController$1

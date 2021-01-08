@@ -85,6 +85,7 @@ public class MainUiController {
     private void initialize() throws FileNotFoundException {
 
         APIHandler data = new APIHandler();
+<<<<<<< HEAD
 
         //Get Search Request
 
@@ -153,6 +154,12 @@ public class MainUiController {
         WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
 
         ArrayList<Object> dailyForecastData = data.getForecastApiData(location);
+=======
+        ArrayList<Object> oneDayWeatherData = data.getCurrentApiData(data.getCurrentLocation());
+        WeatherDay oneDayWeather = new WeatherDay(oneDayWeatherData);
+
+        ArrayList<Object> dailyForecastData = data.getForecastApiData(data.getCurrentLocation());
+>>>>>>> master
 
         WeatherForecast dailyForecast = new WeatherForecast(dailyForecastData,5);
 
@@ -209,7 +216,7 @@ public class MainUiController {
     //formatting current day (on app launch)
     private String getDay(){
         Date currentDay = new Date();
-        DateFormat format = new SimpleDateFormat("EEE d, YYYY");
+        DateFormat format = new SimpleDateFormat("EEE d, MMM, YYYY");
         return format.format(currentDay);
     }
 
