@@ -149,4 +149,8 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+<<<<<<< Updated upstream
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,gradle
+=======
+# End of https://www.toptal.com/developers/gitignore/api/intellij,java,gradle
+>>>>>>> Stashed changes

@@ -21,10 +21,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -92,7 +89,6 @@ public class MainUiController {
 
         APIHandler data = new APIHandler();
 
-
         //Get Search Request
 
         searchBox.setOnAction(new EventHandler<ActionEvent>() {
@@ -149,8 +145,6 @@ public class MainUiController {
                 lblday6temp.setText(dailyForecastRequest.tempForecast[4]);
 
                 getDaysOfWeek();
-
-
             }
         });
 
@@ -177,7 +171,8 @@ public class MainUiController {
         System.out.println(timezoneOneDay);
 
         long epoch = System.currentTimeMillis()/1000;
-        long correctTimezone = (epoch+timezoneOneDay)/1000;
+        long correctTimezone = (epoch+timezoneOneDay);
+        System.out.println(epoch);
 
         String imgPath = "/com/dithub/weather/img/icons/";
         Image img = new Image(getClass().getResource(imgPath).toString());
