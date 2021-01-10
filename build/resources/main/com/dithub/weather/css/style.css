@@ -8,16 +8,19 @@ Pane{
    -fx-background-position: center center;
 }
 
-#search{
+#searchBox{
     -fx-opacity: 0.5;
 }
 
-#search-box {
+#searchBox {
     -fx-background-color: transparent !important;
 }
 
-#search-box:focused{
+#searchBox:focused{
     -fx-text-fill: white !important;
+}
 
-
+.search-field{
+    -fx-background-color: transparent !important;
+    -fx-text-fill: white !important;
 }

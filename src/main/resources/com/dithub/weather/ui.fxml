@@ -19,7 +19,7 @@
 
    <Line endX="100.5" layoutX="152.0" layoutY="44.0" startX="-100.0" stroke="#707070" />
    <SVGPath content="M15.5,14h-.79l-.28-.27a6.51,6.51,0,1,0-.7.7l.27.28v.79l5,4.99L20.49,19Zm-6,0A4.5,4.5,0,1,1,14,9.5,4.494,4.494,0,0,1,9.5,14Z" fill="WHITE" layoutX="49.0" layoutY="17.0" opacity="0.6" />
-   <TextField fx:id="searchBox" focusTraversable="false" layoutX="69.0" layoutY="15.0" prefHeight="25.0" prefWidth="174.0" promptText="enter city name" styleClass="search-field" stylesheets="@css/style.css">
+   <TextField fx:id="searchBox" focusTraversable="false" layoutX="69.0" layoutY="15.0" prefHeight="25.0" prefWidth="174.0" promptText="enter city name" style="-fx-border-color: none;" styleClass="search-field" stylesheets="@css/style.css">
       <font>
          <Font size="14.0" />
       </font>
