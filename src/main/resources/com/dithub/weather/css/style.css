@@ -55,5 +55,9 @@ Pane{
 .notFound .button:hover{
     -fx-background-color: #cc6600;
     -fx-cursor: hand;
+}
+
+.forecastHourly{
+    -fx-background: #212121;
 
 }

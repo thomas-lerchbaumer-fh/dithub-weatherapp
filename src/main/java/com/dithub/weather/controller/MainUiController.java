@@ -3,16 +3,19 @@ package com.dithub.weather.controller;
 import com.dithub.weather.APIHandler;
 import com.dithub.weather.WeatherDay;
 import com.dithub.weather.WeatherForecast;
+import com.dithub.weather.WeatherForecastHourly;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.geometry.Orientation;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -82,6 +85,9 @@ public class MainUiController {
     public ImageView imgWeatherImg5;
     @FXML
     public ImageView imgWeatherImg6;
+
+    @FXML
+    public HBox hourlyForecast;
 
     ClassLoader classLoader = getClass().getClassLoader();
 
@@ -186,7 +192,6 @@ public class MainUiController {
         WeatherDay oneDayWeather;
         ArrayList<Object> dailyForecastData;
         WeatherForecast dailyForecast;
-        WeatherForecastHourly twoDaysForecastDataHourly;
         ArrayList<Object> twoDaysForecastDataHourly;
 
         if(searchRequest == ""){
@@ -195,16 +200,18 @@ public class MainUiController {
             oneDayWeather = new WeatherDay(oneDayWeatherData);
             dailyForecastData = data.getForecastApiData(data.getCurrentLocation());
             dailyForecast = new WeatherForecast(dailyForecastData,5);
+            twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
         }else {
             oneDayWeatherData = data.getCurrentApiData(searchRequest);
             oneDayWeather = new WeatherDay(oneDayWeatherData);
             dailyForecastData = data.getForecastApiData(searchRequest);
             dailyForecast = new WeatherForecast(dailyForecastData,5);
+            twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
         }
 
-        twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeatherData.lat, oneDayWeatherData.lon);
-        twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
-        System.out.println(twoDaysHourly)
+
+        WeatherForecastHourly twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
+
 
         ArrayList dayList = getDaysOfWeek();
 
@@ -251,6 +258,26 @@ public class MainUiController {
         lblday6.setText(String.valueOf(dayList.get(4)));
         imgWeatherImg6.setImage(new Image(imgPath+dailyForecast.iconForecast[4]+".png"));
         lblday6temp.setText(dailyForecast.tempForecast[4]);
+
+
+        //hourly forecast
+        StackPane blaa = new StackPane();
+        Label test = new Label();
+        test.setText("hello");
+        Image blubb = new Image(imgPath+dailyForecast.iconForecast[4]+".png");
+
+        ListView abc = new ListView();
+
+
+
+
+
+
+        hourlyForecast.getChildren().addAll(test);
+
+
+
+
 
         getDaysOfWeek();
 

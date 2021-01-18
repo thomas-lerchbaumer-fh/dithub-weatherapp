@@ -24,3 +24,40 @@ Pane{
     -fx-background-color: transparent !important;
     -fx-text-fill: white !important;
 }
+
+.notFound{
+    -fx-background-color: #212121;
+}
+
+.notFound > *.button-bar > *.container{
+    -fx-background-color: #212121;
+    -fx-text-fill: #cc6600;
+}
+.notFound > *.label.content{
+    -fx-text-fill: white;
+}
+.notFound *.header-panel{
+    -fx-background-color: #212121;
+    -fx-text-fill: #cc6600;
+}
+.notFound *.header-panel *.label{
+    -fx-font-size: 18px;
+    -fx-fill: #212121;
+    -fx-text-fill: #cc6600;
+}
+
+.notFound .button{
+    -fx-border-color: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.notFound .button:hover{
+    -fx-background-color: #cc6600;
+    -fx-cursor: hand;
+}
+
+.forecastHourly{
+    -fx-background: #212121;
+
+}

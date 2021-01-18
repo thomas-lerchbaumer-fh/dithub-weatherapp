@@ -19,6 +19,8 @@ public class WeatherDay {
     public WeatherDay(ArrayList<Object> firstday){
         JSONArray oneDayData = new JSONArray(firstday);
 
+        System.out.println(oneDayData);
+
         this.countryOneDay = oneDayData.getJSONObject(0).getJSONObject("sys").get("country").toString();
         this.cityOneDay = oneDayData.getJSONObject(0).get("name").toString();
         this.tempOneDay = oneDayData.getJSONObject(0).getJSONObject("main").getInt("temp") +"\u00B0";
