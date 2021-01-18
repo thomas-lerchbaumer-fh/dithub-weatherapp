@@ -186,6 +186,8 @@ public class MainUiController {
         WeatherDay oneDayWeather;
         ArrayList<Object> dailyForecastData;
         WeatherForecast dailyForecast;
+        WeatherForecastHourly twoDaysForecastDataHourly;
+        ArrayList<Object> twoDaysForecastDataHourly;
 
         if(searchRequest == ""){
             String location = data.getCurrentLocation();
@@ -200,12 +202,17 @@ public class MainUiController {
             dailyForecast = new WeatherForecast(dailyForecastData,5);
         }
 
+        twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeatherData.lat, oneDayWeatherData.lon);
+        twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
+        System.out.println(twoDaysHourly)
+
         ArrayList dayList = getDaysOfWeek();
 
         String city = oneDayWeather.cityOneDay;
         String country = oneDayWeather.countryOneDay;
         String tempCel = oneDayWeather.tempOneDay;
         String iconIdent = oneDayWeather.iconOneDay;
+
         int timezoneOneDay = oneDayWeather.timezoneOffsetOneDay;
         int timezoneForecast = dailyForecast.timezoneOffsetForecast;
 

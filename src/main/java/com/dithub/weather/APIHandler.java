@@ -23,6 +23,42 @@ public class APIHandler {
     //user search request here
     //Please implement logic for search request (pulling data) you can use dummy city, search field input will be done by me
 
+    public static ArrayList<Object> getHourlyForecastTwoDaysApiData(String lat, String lon) {
+        ArrayList<Object> listdata = new ArrayList<Object>();
+        String appId = "8bcb04fb242f29f824ec1efb44188c91";
+
+        try {
+            URL url = new URL("http://api.openweathermap.org/data/2.5/onecall"
+                    + "?lat=" + lat
+                    + "&lon=" + lon
+                    + "?units=metric"
+                    + "&appid=" + appId);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = in.readLine()) != null) {
+                    sb.append(line);
+                }
+                JSONObject json = new JSONObject(sb.toString());
+                listdata.add(json);
+                in.close();
+            } else {
+                System.err.println("Wrong response code: " + responseCode);
+            }
+        } catch (Exception ex) {
+            System.err.println("Request error: " + ex.getMessage());
+        }
+        return listdata;
+    }
+
+
     public static ArrayList<Object> getCurrentApiData(String location) {
         ArrayList<Object> listdata = new ArrayList<Object>();
         String appId = "8bcb04fb242f29f824ec1efb44188c91";

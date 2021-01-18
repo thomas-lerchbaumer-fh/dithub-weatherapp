@@ -12,6 +12,8 @@ public class WeatherDay {
     public String tempOneDay;
     public String iconOneDay;
     public int timezoneOffsetOneDay;
+    public String lon;
+    public String lat;
 
 
     public WeatherDay(ArrayList<Object> firstday){
@@ -22,5 +24,7 @@ public class WeatherDay {
         this.tempOneDay = oneDayData.getJSONObject(0).getJSONObject("main").getInt("temp") +"\u00B0";
         this.iconOneDay = oneDayData.getJSONObject(0).getJSONArray("weather").getJSONObject(0).get("icon").toString();
         this.timezoneOffsetOneDay = (Integer)oneDayData.getJSONObject(0).get("timezone");
+        this.lon = oneDayData.getJSONObject(0).getJSONObject("coord").get("lon").toString();
+        this.lat = oneDayData.getJSONObject(0).getJSONObject("coord").get("lat").toString();
     }
 }
