@@ -190,8 +190,10 @@ public class MainUiController {
 
         ArrayList<Object> oneDayWeatherData;
         WeatherDay oneDayWeather;
+
         ArrayList<Object> dailyForecastData;
         WeatherForecast dailyForecast;
+
         ArrayList<Object> twoDaysForecastDataHourly;
 
         if(searchRequest == ""){
@@ -201,17 +203,16 @@ public class MainUiController {
             dailyForecastData = data.getForecastApiData(data.getCurrentLocation());
             dailyForecast = new WeatherForecast(dailyForecastData,5);
             twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
+            WeatherForecastHourly twoDaysForecastHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
+            System.out.println(twoDaysForecastHourly.tempForecastHourly[6]);
         }else {
             oneDayWeatherData = data.getCurrentApiData(searchRequest);
             oneDayWeather = new WeatherDay(oneDayWeatherData);
             dailyForecastData = data.getForecastApiData(searchRequest);
             dailyForecast = new WeatherForecast(dailyForecastData,5);
             twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
+            WeatherForecastHourly twoDaysForecastHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
         }
-
-
-        WeatherForecastHourly twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
-
 
         ArrayList dayList = getDaysOfWeek();
 

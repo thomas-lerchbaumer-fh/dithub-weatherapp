@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class WeatherForecastHourly {
 
-    public String[] tempForecast = new String[48];
-    public String[] iconForecast = new String[48];
+    public String[] tempForecastHourly = new String[48];
+    public String[] iconForecastHourly = new String[48];
 
     public WeatherForecastHourly(ArrayList<Object> forecastHourly, int hours){
         JSONArray forecastDataHourly = new JSONArray(forecastHourly);
@@ -15,13 +15,13 @@ public class WeatherForecastHourly {
         int count = 0;
 
         for(int i = 0; i<hours; i++){
-           // this.tempForecast[count] = forecastDataHourly.getJSONObject(0).getJSONArray("hourly").getJSONObject(i).getJSONArray("weather").getJSONObject(0).get("icon").toString();
+            this.tempForecastHourly[count] = forecastDataHourly.getJSONObject(0).getJSONArray("hourly").getJSONObject(i).getInt("temp") + "\u00B0"
             count++;
         }
         count = 0;
 
         for(int i = 0; i<hours; i++){
-            //this.iconForecast[count] = forecastDataHourly.getJSONObject(0).getJSONArray("hourly").getJSONObject(i).getJSONArray("weather").getJSONObject(0).get("icon").toString();
+            this.iconForecastHourly[count] = forecastDataHourly.getJSONObject(0).getJSONArray("hourly").getJSONObject(i).getJSONArray("weather").getJSONObject(0).get("icon").toString();
             count++;
         }
     }

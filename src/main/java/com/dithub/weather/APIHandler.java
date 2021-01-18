@@ -32,7 +32,7 @@ public class APIHandler {
             URL url = new URL("http://api.openweathermap.org/data/2.5/onecall"
                     + "?lat=" + lat
                     + "&lon=" + lon
-                    + "?units=metric"
+                    + "&units=metric"
                     + "&appid=" + appId);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
