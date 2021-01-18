@@ -26,7 +26,6 @@ public class APIHandler {
     public static ArrayList<Object> getHourlyForecastTwoDaysApiData(String lat, String lon) {
         ArrayList<Object> listdata = new ArrayList<Object>();
         String appId = "8bcb04fb242f29f824ec1efb44188c91";
-        System.out.println(lat + " "+lon);
 
         try {
             URL url = new URL("http://api.openweathermap.org/data/2.5/onecall"
@@ -34,6 +33,8 @@ public class APIHandler {
                     + "&lon=" + lon
                     + "&units=metric"
                     + "&appid=" + appId);
+
+            System.out.println(url);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");

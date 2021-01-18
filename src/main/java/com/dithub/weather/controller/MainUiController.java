@@ -8,10 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -87,7 +89,7 @@ public class MainUiController {
     public ImageView imgWeatherImg6;
 
     @FXML
-    public HBox hourlyForecast;
+    public ListView hourlyForecast;
 
     ClassLoader classLoader = getClass().getClassLoader();
 
@@ -190,11 +192,10 @@ public class MainUiController {
 
         ArrayList<Object> oneDayWeatherData;
         WeatherDay oneDayWeather;
-
         ArrayList<Object> dailyForecastData;
         WeatherForecast dailyForecast;
-
         ArrayList<Object> twoDaysForecastDataHourly;
+        WeatherForecastHourly twoDaysHourly;
 
         if(searchRequest == ""){
             String location = data.getCurrentLocation();
@@ -203,16 +204,19 @@ public class MainUiController {
             dailyForecastData = data.getForecastApiData(data.getCurrentLocation());
             dailyForecast = new WeatherForecast(dailyForecastData,5);
             twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
-            WeatherForecastHourly twoDaysForecastHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
-            System.out.println(twoDaysForecastHourly.tempForecastHourly[6]);
+            twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
         }else {
             oneDayWeatherData = data.getCurrentApiData(searchRequest);
             oneDayWeather = new WeatherDay(oneDayWeatherData);
             dailyForecastData = data.getForecastApiData(searchRequest);
             dailyForecast = new WeatherForecast(dailyForecastData,5);
             twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
-            WeatherForecastHourly twoDaysForecastHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
+            twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
         }
+
+
+        //WeatherForecastHourly twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
+
 
         ArrayList dayList = getDaysOfWeek();
 
@@ -263,18 +267,71 @@ public class MainUiController {
 
         //hourly forecast
         StackPane blaa = new StackPane();
-        Label test = new Label();
-        test.setText("hello");
-        Image blubb = new Image(imgPath+dailyForecast.iconForecast[4]+".png");
 
-        ListView abc = new ListView();
+        //System.out.println(twoDaysHourly.iconForecast[0]);
+        //checking for current our of the day
+
+        String fetchTime = getTime(timezoneOneDay);
+        int startingHour = Integer.parseInt(fetchTime.substring(0,2));
+
+        ArrayList test1 =new ArrayList();
+
+        hourlyForecast.setOrientation(Orientation.HORIZONTAL);
+
+        for(int i = 1; i < 48; i++){
+            System.out.println(twoDaysHourly.tempForecastHourly[i] + " " + " Hello");
+            System.out.println(twoDaysHourly.iconForecastHourly[i] + " " + " Hello");
+
+
+            SplitPane sp = new SplitPane();
+
+            BorderPane bp = new BorderPane();
+
+            Image img1 = new Image(imgPath+twoDaysHourly.iconForecastHourly[i]+".png");
+
+            ImageView imgFin = new ImageView();
+            imgFin.setImage(img1);
+            imgFin.setFitWidth(30);
+            imgFin.setFitHeight(30);
+
+            Label space = new Label();
+
+
+
+            Label text = new Label(twoDaysHourly.tempForecastHourly[i]);
+            text.snappedBottomInset();
+
+            ToolBar toolbar = new ToolBar();
+
+            bp.setTop(new TextField("Top"));;
+            bp.setCenter(imgFin);
+            bp.setPrefSize(100,100);
+
+
+            // Add the values from our piece to the HBox
+
+            int increaseTime = startingHour +i;
+
+            String incTime = increaseTime +":00";
+            Label time = new Label(incTime);
+
+            sp.setOrientation(Orientation.VERTICAL);
+            sp.getItems().add(text);
+            sp.getItems().add(imgFin);
+            sp.getItems().add(time);
+
+
+            hourlyForecast.getItems().addAll(sp);
+
+
+
+        }
 
 
 
 
 
 
-        hourlyForecast.getChildren().addAll(test);
 
 
 

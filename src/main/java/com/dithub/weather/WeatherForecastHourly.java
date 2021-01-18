@@ -15,7 +15,7 @@ public class WeatherForecastHourly {
         int count = 0;
 
         for(int i = 0; i<hours; i++){
-            this.tempForecastHourly[count] = forecastDataHourly.getJSONObject(0).getJSONArray("hourly").getJSONObject(i).getInt("temp") + "\u00B0"
+            this.tempForecastHourly[count] = forecastDataHourly.getJSONObject(0).getJSONArray("hourly").getJSONObject(i).getInt("temp") + "\u00B0";
             count++;
         }
         count = 0;
