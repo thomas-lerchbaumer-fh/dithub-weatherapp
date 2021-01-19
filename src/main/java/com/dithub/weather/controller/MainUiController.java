@@ -8,30 +8,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import org.w3c.dom.Text;
-
-import java.io.BufferedReader;
+import javafx.scene.text.Font;
 import java.io.FileNotFoundException;
-
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class MainUiController {
@@ -91,10 +78,6 @@ public class MainUiController {
     @FXML
     public ListView hourlyForecast;
 
-    ClassLoader classLoader = getClass().getClassLoader();
-
-    Image img = new Image(getClass().getResource("/com/dithub/weather/img/icons/02d.png").toString());
-
     //adding pulled data to UI
     @FXML
     private void initialize() throws FileNotFoundException {
@@ -115,7 +98,7 @@ public class MainUiController {
                 }
             }
         });
-
+        hourlyForecast.getItems().clear();
      setSceneProperties("");
 
     }
@@ -210,12 +193,12 @@ public class MainUiController {
             oneDayWeather = new WeatherDay(oneDayWeatherData);
             dailyForecastData = data.getForecastApiData(searchRequest);
             dailyForecast = new WeatherForecast(dailyForecastData,5);
+
             twoDaysForecastDataHourly = data.getHourlyForecastTwoDaysApiData(oneDayWeather.lat, oneDayWeather.lon);
             twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
+            //clearing list view (hourly forecast) otherwise updates won't be shown
+            hourlyForecast.getItems().clear();
         }
-
-
-        //WeatherForecastHourly twoDaysHourly = new WeatherForecastHourly(twoDaysForecastDataHourly, 48);
 
 
         ArrayList dayList = getDaysOfWeek();
@@ -226,11 +209,8 @@ public class MainUiController {
         String iconIdent = oneDayWeather.iconOneDay;
 
         int timezoneOneDay = oneDayWeather.timezoneOffsetOneDay;
-        int timezoneForecast = dailyForecast.timezoneOffsetForecast;
-
 
         String imgPath = "/com/dithub/weather/img/icons/";
-        Image img = new Image(getClass().getResource(imgPath).toString());
 
         //setting infos from API to UI lables/img
         lblCity.setText(replaceSpecialSignOutput(city)+ ", " + replaceSpecialSignOutput(country));
@@ -266,76 +246,50 @@ public class MainUiController {
 
 
         //hourly forecast
-        StackPane blaa = new StackPane();
-
-        //System.out.println(twoDaysHourly.iconForecast[0]);
-        //checking for current our of the day
-
         String fetchTime = getTime(timezoneOneDay);
         int startingHour = Integer.parseInt(fetchTime.substring(0,2));
 
-        ArrayList test1 =new ArrayList();
+        int hourCounter = startingHour +1;
 
+        // setting orientation for listview
         hourlyForecast.setOrientation(Orientation.HORIZONTAL);
 
         for(int i = 1; i < 48; i++){
-            System.out.println(twoDaysHourly.tempForecastHourly[i] + " " + " Hello");
-            System.out.println(twoDaysHourly.iconForecastHourly[i] + " " + " Hello");
-
-
             SplitPane sp = new SplitPane();
-
-            BorderPane bp = new BorderPane();
-
             Image img1 = new Image(imgPath+twoDaysHourly.iconForecastHourly[i]+".png");
 
+            //setting icon for hourly forecast
             ImageView imgFin = new ImageView();
             imgFin.setImage(img1);
-            imgFin.setFitWidth(30);
-            imgFin.setFitHeight(30);
+            imgFin.setFitWidth(50);
+            imgFin.setFitHeight(50);
 
-            Label space = new Label();
+            //adding degree to hourly forecast
+            Label text = new Label();
+            text.setText(twoDaysHourly.tempForecastHourly[i]);
+            text.setStyle("-fx-text-fill: white");
+            text.setFont(new Font("System", 14));
 
-
-
-            Label text = new Label(twoDaysHourly.tempForecastHourly[i]);
-            text.snappedBottomInset();
-
-            ToolBar toolbar = new ToolBar();
-
-            bp.setTop(new TextField("Top"));;
-            bp.setCenter(imgFin);
-            bp.setPrefSize(100,100);
-
-
-            // Add the values from our piece to the HBox
-
-            int increaseTime = startingHour +i;
-
+            //calculating the time
+            int increaseTime = hourCounter;
+            if(hourCounter >= 24){
+                hourCounter = 0;
+            }
+            hourCounter++;
             String incTime = increaseTime +":00";
             Label time = new Label(incTime);
+            time.setStyle("-fx-text-fill: cc6600");
 
+            //adding all 3 elements to split pane
             sp.setOrientation(Orientation.VERTICAL);
             sp.getItems().add(text);
             sp.getItems().add(imgFin);
             sp.getItems().add(time);
 
-
+            //adding info to list view
             hourlyForecast.getItems().addAll(sp);
 
-
-
         }
-
-
-
-
-
-
-
-
-
-
 
         getDaysOfWeek();
 

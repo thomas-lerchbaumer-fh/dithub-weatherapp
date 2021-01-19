@@ -1,28 +1,20 @@
 package com.dithub.weather;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import org.json.*;
 import org.w3c.dom.Document;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
+
 
 
 public class APIHandler {
 
     //user search request here
     //Please implement logic for search request (pulling data) you can use dummy city, search field input will be done by me
-
     public static ArrayList<Object> getHourlyForecastTwoDaysApiData(String lat, String lon) {
         ArrayList<Object> listdata = new ArrayList<Object>();
         String appId = "8bcb04fb242f29f824ec1efb44188c91";
@@ -33,8 +25,6 @@ public class APIHandler {
                     + "&lon=" + lon
                     + "&units=metric"
                     + "&appid=" + appId);
-
-            System.out.println(url);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");

@@ -11,7 +11,6 @@ public class WeatherForecastHourly {
 
     public WeatherForecastHourly(ArrayList<Object> forecastHourly, int hours){
         JSONArray forecastDataHourly = new JSONArray(forecastHourly);
-        System.out.println(forecastDataHourly);
         int count = 0;
 
         for(int i = 0; i<hours; i++){

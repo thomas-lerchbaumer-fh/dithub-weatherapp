@@ -144,7 +144,7 @@
          <Font size="27.0" />
       </font>
    </Label>
-   <ListView fx:id="hourlyForecast" layoutX="61.0" layoutY="506.0" prefHeight="124.0" prefWidth="885.0" />
+   <ListView fx:id="hourlyForecast" layoutX="61.0" layoutY="526.0" prefHeight="124.0" prefWidth="885.0" styleClass="list-view-hourly" stylesheets="@css/style.css" />
 
 
 </Pane>
